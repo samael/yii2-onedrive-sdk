@@ -72,7 +72,7 @@ class OneDriveSdk extends Component
                 'scope' => 'https://graph.microsoft.com/.default',
                 'grant_type' => 'client_credentials',
             ], $this->credentials),
-        ])->getBody()->getContents());
+        ])->getBody()->getContents(), false);
 
         return $token->access_token;
     }
