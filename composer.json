@@ -1,0 +1,44 @@
+{
+  "name": "datamind/yii2-onedrive-sdk",
+  "description": "This extension provides the OneDrive SDK integration for the Yii2 framework",
+  "type": "yii2-extension",
+  "minimum-stability": "stable",
+  "keywords": [
+    "yii2",
+    "extension",
+    "onedrive",
+    "microsoft",
+    "sdk",
+    "sharepoint",
+    "ec2",
+    "dynamodb",
+    "cloud",
+    "glacier"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://gitlab.phrm.pro/datamind/yii2-onedrive-sdk/issues?state=open",
+    "source": "https://gitlab.phrm.pro/datamind/yii2-onedrive-sdk"
+  },
+  "authors": [
+    {
+      "name": "Bohdan Tsekhanskyi",
+      "email": "web.dev5@rks.team"
+    }
+  ],
+  "require": {
+    "microsoft/microsoft-graph": "^1.87.0",
+    "yiisoft/yii2": "2.*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "datamind\\onedrivesdk\\": ""
+    }
+  }
+}
