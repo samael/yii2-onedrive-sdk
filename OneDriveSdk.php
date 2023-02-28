@@ -16,7 +16,22 @@ class OneDriveSdk extends Component
     /**
      * @var string specifies the URL to login
      */
-    public $url = 'https://login.microsoftonline.com/{your-id-number}/oauth2/v2.0/token';
+    public $url = 'https://login.microsoftonline.com';
+
+    /**
+     * @var string specifies the ENDPOINT to login
+     */
+    public $endpoint = 'oauth2/v2.0/token';
+
+    /**
+     * "/me" endpoint refers to the user in whose context running request,
+     * thus is only available for delegate permission flows.
+     * If using the application permissions model (client credentials), running this code without any user context,
+     * so there is no user to "resolve" for the "/me" endpoint.
+     * Use /users/{userId} instead.
+     * @var string
+     */
+    public $user = 'me';
 
     /**
      * @var array specifies the MS Graph credentials
@@ -66,8 +81,9 @@ class OneDriveSdk extends Component
     private function _getAccessToken()
     {
         $guzzle = new Client();
+        $requestUrl = $this->url . '/' . $this->credentials['tenant_id'] . '/' . $this->endpoint;
 
-        $token = Json::decode($guzzle->post($this->url, [
+        $token = Json::decode($guzzle->post($requestUrl, [
             'form_params' => array_merge([
                 'scope' => 'https://graph.microsoft.com/.default',
                 'grant_type' => 'client_credentials',
